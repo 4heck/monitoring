@@ -4,7 +4,11 @@
 
     `git clone git@github.com:4heck/monitoring.git`
 
-2. Download all requirements:
+2. Create and activate virtual environment, download all requirements:
+    
+    `python3 -m venv venv`
+    
+    `source venv/bin/activate`
 
     `cd monitoring/app`
     
