@@ -1,4 +1,9 @@
-from .utils import *
+from .utils import status_true_util
+from .utils import status_false_util
+from .utils import start_matching_competitor_util
+from .utils import start_matching_my_util
+from .utils import analyze_util
+
 from django.contrib import admin
 from .models import CompetitorProduct, MyProduct, Match
 from import_export.admin import ImportExportModelAdmin
@@ -20,10 +25,6 @@ def start_matching_competitor(modeladmin, request, queryset):
 
 def start_matching_my(modeladmin, request, queryset):
     start_matching_my_util(modeladmin, request, queryset)
-
-
-def save_graph_action(modeladmin, request, queryset):
-    save_graph_util(modeladmin, request, queryset)
 
 
 def analyze_action(modeladmin, request, queryset):
@@ -55,7 +56,7 @@ class MatchAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id_product', 'name_my', 'shop_competitor', 'price_my',
                     'price_competitor', 'diff', 'status', 'created')
     ordering = ['name_my']
-    actions = [save_graph_action, analyze_action]
+    actions = [analyze_action]
     readonly_fields = ['created']
     fieldsets = [('Сравнение', {'fields': ['id_product', 'created']}),
                  ('Мой товар', {'fields': ['name_my', 'price_my']}),
@@ -80,7 +81,6 @@ status_true.short_description = "Активный статус"
 status_false.short_description = "Неактивный статус"
 start_matching_competitor.short_description = "Сравнить c моими товарами"
 start_matching_my.short_description = "Сравнить c товарами конкурента"
-save_graph_action.short_description = "Построить график"
 analyze_action.short_description = "Анализ сравнений"
 
 admin.site.register(CompetitorProduct, CompetitorsProductAdmin)

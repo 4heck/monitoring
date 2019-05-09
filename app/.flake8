@@ -4,4 +4,3 @@ import-order-style = smarkets
 ignore = C901,D400,D100,D205,D105,D401
 max-line-length = 320
 max-complexity = 10
-a

@@ -87,14 +87,14 @@ def api_productmy(request):
         new_product_name = new_product.get('name')
         if new_product_url and new_product_name:
             product, posted = MyProduct.objects.get_or_create(url=new_product_url,
-                                                                      defaults={'id_product': new_product.get('id_product'),
-                                                                                'name': new_product_name,
-                                                                                'price': new_product.get('price'),
-                                                                                'categoryId': new_product.get('categoryId'),
-                                                                                'categoryName': new_product.get('categoryName'),
-                                                                                'vendorName': new_product.get('vendorName'),
-                                                                                'status': new_product.get('status'),
-                                                                                'created': new_product.get('created')})
+                                                                                  defaults={'id_product': new_product.get('id_product'),
+                                                                                            'name': new_product_name,
+                                                                                            'price': new_product.get('price'),
+                                                                                            'categoryId': new_product.get('categoryId'),
+                                                                                            'categoryName': new_product.get('categoryName'),
+                                                                                            'vendorName': new_product.get('vendorName'),
+                                                                                            'status': new_product.get('status'),
+                                                                                            'created': new_product.get('created')})
             return JsonResponse({"posted": posted,
                                  "id": product.id,
                                  "id_product": product.id_product,

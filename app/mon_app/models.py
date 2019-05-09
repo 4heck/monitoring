@@ -63,7 +63,7 @@ class Match(models.Model):
                                    help_text="При добавлении нового сравнения вручную дата добавляется <em>автоматически</em>.")
 
     def __str__(self):
-        id_product = ('Товар с артикулом {} : {}').format(str(self.id_product),self.name_my)
+        id_product = ('Товар с артикулом {} : {}').format(str(self.id_product), self.name_my)
         # id_product = 'Товар с артикулом ' + str(self.id_product) + ': ' + self.name_my
         return id_product
 

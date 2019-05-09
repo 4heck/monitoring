@@ -1,5 +1,4 @@
-from .models import *
-import datetime
+from .models import MyProduct, CompetitorProduct, Match
 from django.contrib import messages
 
 
@@ -42,7 +41,6 @@ def start_matching_competitor_util(modeladmin, request, queryset):
             status = True
         elif diff > 0:
             status = False
-
 
         Match.objects.update_or_create(id_product=id_product_competitor,
                                        defaults={'id_product': id_product_my,
@@ -94,23 +92,6 @@ def start_matching_my_util(modeladmin, request, queryset):
     modeladmin.message_user(request, "Объекты сравнены")
 
 
-def save_graph_util(modeladmin, request, queryset):
-    products = queryset.values('shop_competitor', 'price_my', 'price_competitor', 'name_my')
-    # for product in products:
-    #     shops = product.get('shop_competitor')
-    #     price_my = product.get('price_my')
-    #     price_competitor = product.get('price_competitor')
-    #     name = product.get('name_my')
-    #     data_my = {'name': name,
-    #                'price': price_my}
-    #
-    #     data_competitor = {"shops": shops,
-    #                        'price': price_competitor,
-    #                        'name': name}
-
-    # pylab.savefig('mon_app/graphs/match_' + str(datetime.datetime.now()).replace(' ', '') + '.png')
-
-
 def analyze_util(modeladmin, request, queryset):
     count = queryset.count()
     prices_competitor = queryset.values('price_competitor')
@@ -132,4 +113,3 @@ def analyze_util(modeladmin, request, queryset):
     else:
         percent_diff = 100 - avg_competitor / avg_my * 100
         messages.error(request, "Средняя цена у конкурента: {}, средняя цена у меня: {}. Мои товары на {} процентов дороже.".format(avg_competitor, avg_my, percent_diff))
-

@@ -1,6 +1,5 @@
 from django.http import JsonResponse
 
-
 from django.views.decorators.csrf import csrf_exempt
 from mon_app.models import CompetitorProduct
 
@@ -9,7 +8,6 @@ import json
 
 @csrf_exempt
 def api_productcompetitor_id(request, id):
-
     # ПОЛУЧИТЬ ТОВАР ПО id
     if request.method == "GET":
         product = CompetitorProduct.objects.get(id=id)
@@ -83,7 +81,6 @@ def api_productcompetitor_id(request, id):
 
 @csrf_exempt
 def api_productcompetitor(request):
-
     # ДОБАВИТЬ НОВЫЙ ТОВАР
     if request.method == "POST":
         new_product = json.loads(request.body)
@@ -119,6 +116,7 @@ def api_productcompetitor(request):
     if request.method == "GET":
         products = CompetitorProduct.objects.all()
         products_json = [{"id": product.id,
+                          "id_product": product.id_product,
                           "name": product.name,
                           "price": product.price,
                           "categoryId": product.categoryId,

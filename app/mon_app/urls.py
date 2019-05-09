@@ -1,9 +1,9 @@
 from django.urls import path
 
-from mon_app.api.competitor_products_api import *
-from mon_app.api.my_products_api import *
-from mon_app.api.match_api import *
-from .views import *
+from mon_app.api.competitor_products_api import api_productcompetitor_id, api_productcompetitor
+from mon_app.api.my_products_api import api_productmy_id, api_productmy
+from mon_app.api.match_api import api_match_id, api_match
+from .views import index, parsing, support, other
 
 
 urlpatterns = [

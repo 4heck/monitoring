@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from mon_app.models import CompetitorProduct
-import os
+import random
 from decimal import Decimal, InvalidOperation
 
 
@@ -46,7 +46,9 @@ def get_page_data(html):
 
             data = {'id_product': id_product,
                     'name': name,
-                    'price': price,
+                    # генерация цены с рандомайзером для создания образца базы данных МОИХ товаров
+                    'price': float(price) + round(random.uniform(-1, 1)*400)*5,
+                    # 'price': price;
                     'categoryId': categoryId,
                     'categoryName': categoryName,
                     'vendorName': vendorName.lower().title(),

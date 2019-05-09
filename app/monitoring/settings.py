@@ -23,6 +23,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'corsheaders',
     'debug_toolbar',
     'import_export'
 ]
@@ -42,8 +43,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware'
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#     '127.0.0.1:8000',
+#     'localhost:8000'
+# )
 
 ROOT_URLCONF = 'monitoring.urls'
 
@@ -110,8 +121,8 @@ SUIT_CONFIG = {
     'HEADER_TIME_FORMAT': 'H:i',
 
     # forms
-    'SHOW_REQUIRED_ASTERISK': True,  # Default True
-    'CONFIRM_UNSAVED_CHANGES': True, # Default True
+    'SHOW_REQUIRED_ASTERISK': True,   # Default True
+    'CONFIRM_UNSAVED_CHANGES': True,  # Default True
 
     # menu
     'SEARCH_URL': '/admin/mon_app/item/',
@@ -124,8 +135,8 @@ SUIT_CONFIG = {
     'MENU': (
         # 'sites',
         {'app': 'mon_app', 'icon': 'icon-cog', 'url': '/admin/mon_app/'},
-        {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
-        {'label': 'Помощь', 'icon':'icon-question-sign', 'url': '/support/'},
+        {'app': 'auth', 'icon': 'icon-lock', 'models': ('user', 'group')},
+        {'label': 'Помощь', 'icon': 'icon-question-sign', 'url': '/support/'},
     ),
 
     # misc

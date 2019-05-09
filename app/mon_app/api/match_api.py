@@ -32,17 +32,17 @@ def api_match_id(request, id):
         updated_match_url = updated_match.get('url')
         updated_match_id_product = updated_match.get('id_product')
         if updated_match_url and updated_match_id_product:
-            updated = match.update(status=updated_match.get('status'),
-                                   created=updated_match.get('created'),
-                                   id_product=updated_match_id_product,
-                                   name_competitor=updated_match.get('name_competitor'),
-                                   name_my=updated_match.get('name_my'),
-                                   price_competitor=updated_match.get('price_competitor'),
-                                   price_my=updated_match.get('price_my'),
-                                   diff=updated_match.get('diff'),
-                                   shop_competitor=updated_match.get('shop_competitor'),
-                                   url=updated_match_url
-                                   )
+            match.update(status=updated_match.get('status'),
+                         created=updated_match.get('created'),
+                         id_product=updated_match_id_product,
+                         name_competitor=updated_match.get('name_competitor'),
+                         name_my=updated_match.get('name_my'),
+                         price_competitor=updated_match.get('price_competitor'),
+                         price_my=updated_match.get('price_my'),
+                         diff=updated_match.get('diff'),
+                         shop_competitor=updated_match.get('shop_competitor'),
+                         url=updated_match_url
+                         )
             updated_match = Match.objects.get(id=id)
             return JsonResponse({"updated": 1,
                                  "status": updated_match.status,
