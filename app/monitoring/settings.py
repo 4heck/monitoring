@@ -76,7 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'monitoring.wsgi.application'
 
-postgres = True
+postgres = False
 
 if postgres:
     DATABASES = {
