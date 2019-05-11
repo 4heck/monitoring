@@ -8,7 +8,7 @@ ADMIN_SITE_HEADER = "Parsing Admin Panel"
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mamleevruslan43.pythonanywhere.com/']
 
 STATIC_URL = '/static/'
 
@@ -23,7 +23,6 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'corsheaders',
     'debug_toolbar',
     'import_export'
 ]
@@ -44,13 +43,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ORIGIN_WHITELIST = (
 #     '127.0.0.1:8000',
 #     'localhost:8000'
