@@ -16,10 +16,6 @@ def support(request):
     return render(request, 'mon_app/support/support.html')
 
 
-def other(request):
-    return render(request, 'mon_app/other/other.html')
-
-
 def parsing(request):
     if request.method == 'GET':
         return render(request, 'mon_app/index.html')

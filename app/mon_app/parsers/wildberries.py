@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from mon_app.models import CompetitorProduct
 import os
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal
 
 
 def get_html(url):
@@ -14,10 +14,8 @@ def get_html(url):
 
 
 def refined(s):
-    s1 = s.replace('\t', '')
-    s2 = s1.replace('\n', '')
-    s3 = s2.replace('\r', '')
-    return s3
+    s = s.replace('\t', '').replace('\n', '').replace('\r', '')
+    return s
 
 
 def get_page_data(html):
@@ -56,15 +54,8 @@ def write_db(competitor_products):
     for competitor_product in competitor_products:
         url = competitor_product.get('url')
         if url:
-            try:
-                price = Decimal(competitor_product.get('price'))
-            except InvalidOperation:
-                price = None
-            try:
-                id_product = int(competitor_product.get('id_product'))
-            except ValueError:
-                id_product = None
-
+            price = Decimal(competitor_product.get('price'))
+            id_product = int(competitor_product.get('id_product'))
             categoryId = competitor_product.get('categoryId')
             categoryName = competitor_product.get('categoryName')
             vendorName = competitor_product.get('vendorName')
@@ -101,7 +92,3 @@ def wildberries(url_target, page_count):
         print(f'--> {i}: {meta}')
     all_product_count = int(product_count_on_page) * int(page_count)
     print("-" * 42 + "\nВсего на странице {} получено {} продуктов".format(url_target, all_product_count) + "\n" + "-" * 42)
-
-
-if __name__ == '__main__':
-    wildberries()

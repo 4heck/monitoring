@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from mon_app.models import CompetitorProduct
 import json
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal
 
 
 class HttpException(Exception):
@@ -61,15 +61,8 @@ def write_db(competitor_products):
         url = competitor_product.get('url')
 
         if url:
-            try:
-                price = Decimal(competitor_product.get('price'))
-            except InvalidOperation:
-                price = None
-            try:
-                id_product = int(competitor_product.get('id_product'))
-            except ValueError:
-                id_product = None
-
+            price = Decimal(competitor_product.get('price'))
+            id_product = int(competitor_product.get('id_product'))
             categoryId = competitor_product.get('categoryId')
             categoryName = competitor_product.get('categoryName')
             vendorName = competitor_product.get('vendorName')
