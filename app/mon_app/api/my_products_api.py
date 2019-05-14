@@ -33,12 +33,12 @@ def api_productmy_id(request, id):
         new_product_url = new_product.get('url')
         new_product_name = new_product.get('name')
         if new_product_url and new_product_name:
-            updated = product.update(id_product=new_product('id_product'),
-                                     name=new_product_name,
+            updated = product.update(name=new_product_name,
                                      price=new_product.get('price'),
                                      categoryId=new_product.get('categoryId'),
                                      categoryName=new_product.get('categoryName'),
                                      vendorName=new_product.get('vendorName'),
+                                     groupId=new_product.get('groupId'),
                                      url=new_product_url,
                                      status=new_product.get('status'),
                                      created=new_product.get('created')

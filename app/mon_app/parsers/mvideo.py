@@ -45,8 +45,8 @@ def get_page_data(html):
             data = {'id_product': id_product,
                     'name': name,
                     # генерация цены с рандомайзером для создания образца базы данных МОИХ товаров
-                    'price': float(price) + round(random.uniform(-1, 1)*400)*5,
-                    # 'price': price;
+                    # 'price': float(price) + round(random.uniform(-1, 1)*400)*5,
+                    'price': price,
                     'categoryId': categoryId,
                     'categoryName': categoryName,
                     'vendorName': vendorName.lower().title(),
